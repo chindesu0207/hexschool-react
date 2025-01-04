@@ -7,12 +7,23 @@ export default {
       fontFamily: {
         sans: ["Noto Sans TC", "serif"],
       },
+      textColor: {
+        DEFAULT: "#333333",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        black: {
+          DEFAULT: "#333333",
+          foreground: "hsl(var(--black-foreground))",
+        },
+        white: {
+          DEFAULT: "#FAFBFC",
+          foreground: "hsl(var(--white-foreground))",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -36,7 +47,7 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "#F47619",
           foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
