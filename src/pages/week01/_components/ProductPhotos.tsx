@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 
 const ProductPhotos = ({ product }: ProductProps) => {
   const [selectedPhoto, setSelectedPhoto] = useState<string>(product.imageUrl);
-  const photos: string[] = [product.imageUrl, ...product.imagesUrl];
+  const photos: string[] = [
+    product.imageUrl,
+    ...product.imagesUrl.filter((item) => item !== ""),
+  ];
 
   useEffect(() => {
     setSelectedPhoto(product.imageUrl);
