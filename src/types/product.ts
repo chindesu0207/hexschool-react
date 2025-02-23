@@ -3,17 +3,26 @@ export interface Product {
   content: string;
   description: string;
   id: string;
-  is_enabled: 1 | 0;
+  is_enabled: number;
   origin_price: number;
   price: number;
   title: string;
   unit: string;
-  num: number;
+  num?: number;
   imageUrl: string;
   imagesUrl: string[];
 }
 
+export type ProductListProps = {
+  products: Product[];
+  onUpdateProduct: (updatedProduct: Product) => void;
+  onDeleteProduct: (deleteProduct: string) => void;
+};
+
 export type ProductProps = {
   product: Product;
+  category?: string[];
   onClick?: () => void;
+  onSave?: (updatedProduct: Product) => void;
+  onDelete?: (deleteProduct: string) => void;
 };
