@@ -3,9 +3,10 @@ import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 export interface FormInput<T extends FieldValues> {
   type: "text" | "number";
   label: string;
-  name: Path<T>;
+  name: Path<T> | string;
   value?: string;
   placeholder?: string;
+  width?: number;
 }
 
 export interface FormTextarea<T extends FieldValues> {
@@ -14,6 +15,7 @@ export interface FormTextarea<T extends FieldValues> {
   name: Path<T>;
   value?: string;
   placeholder?: string;
+  width?: number;
 }
 
 export interface FormSelect<T extends FieldValues> {
@@ -23,6 +25,7 @@ export interface FormSelect<T extends FieldValues> {
   options: { label: string; value: string }[];
   value?: string;
   placeholder?: string;
+  width?: number;
 }
 
 export interface FormSwitch<T extends FieldValues> {
@@ -30,10 +33,19 @@ export interface FormSwitch<T extends FieldValues> {
   label: string;
   name: Path<T>;
   checked?: boolean;
-  // onChange?: (value: boolean) => void;
+  width?: number;
+}
+
+export interface FormButton<T extends FieldValues> {
+  type: "button";
+  label: string;
+  name: Path<T>;
+  onClick?: () => void;
+  width?: number;
 }
 
 export type FormFieldType<T extends FieldValues> =
+  | FormButton<T>
   | FormInput<T>
   | FormTextarea<T>
   | FormSelect<T>
@@ -42,4 +54,5 @@ export type FormFieldType<T extends FieldValues> =
 export type FormRenderProps<T extends FieldValues> = {
   formFields: FormFieldType<T>[];
   methods: UseFormReturn<T>;
+  onButtonClick?: () => void;
 };

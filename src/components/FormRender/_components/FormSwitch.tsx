@@ -16,12 +16,12 @@ const FormSwitch = <T extends FieldValues>({ label, name }: FormSwitch<T>) => {
         control={control}
         name={name}
         render={({ field }) => (
-          <FormItem>
+          <FormItem className="mt-8">
             <div className="flex items-center gap-4">
               <FormLabel>{label}</FormLabel>
               <FormControl>
                 <Switch
-                  checked={field.value}
+                  checked={Boolean(field.value)}
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
