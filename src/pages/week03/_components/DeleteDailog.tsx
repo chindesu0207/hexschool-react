@@ -16,7 +16,7 @@ import { productApi } from "@/api/services/product";
 const DeleteDailog = ({ product, onDelete }: ProductProps) => {
   const onSubmit = async (id: string) => {
     try {
-      const res = await productApi.delete(id);
+      await productApi.delete(id);
       onDelete?.(id);
     } catch (error) {
       console.log(error);

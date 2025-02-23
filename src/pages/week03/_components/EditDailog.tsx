@@ -22,12 +22,7 @@ import { z } from "zod";
 
 const EditDailog = ({ product, category, onSave }: ProductProps) => {
   const [open, setOpen] = useState(false);
-  const imagesNum = {
-    [product.id]: product.imagesUrl.filter((image) => image !== "").length,
-  };
-  const [imagesFields, setImagesFields] = useState<{
-    [productId: string]: number;
-  }>(imagesNum);
+
   const inputFields: FormFieldType<ProductSchemaType>[] = [
     {
       label: "品名",
@@ -86,24 +81,12 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
       type: "text",
       value: product.imageUrl,
     },
-    ...[...Array(imagesFields[product.id] || 0)].map(
-      (_, index): FormFieldType<ProductSchemaType> => ({
-        label: `商品圖片${index + 1}`,
-        name: `imagesUrl.${index}`,
-        type: "text",
-        width: 1,
-      })
-    ),
-    ...(imagesFields[product.id] < 5
-      ? [
-          {
-            label: "新增圖片",
-            name: "addImage",
-            type: "button",
-            width: 1,
-          },
-        ]
-      : []),
+    {
+      label: "圖片名稱",
+      name: `imagesUrl`,
+      type: "images",
+      placeholder: "請填寫網址",
+    },
     {
       label: "是否啟用",
       name: "is_enabled",
@@ -127,13 +110,6 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
       imagesUrl: product.imagesUrl,
     },
   });
-
-  const onButtonClick = () => {
-    setImagesFields((prev) => ({
-      ...prev,
-      [product.id]: (prev[product.id] || 0) + 1,
-    }));
-  };
 
   const handleDialogClose = (isOpen: boolean) => {
     if (!isOpen) {
@@ -178,23 +154,17 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
                     <FormRender
                       methods={form}
                       formFields={inputFields.slice(0, 7)}
-                      onButtonClick={onButtonClick}
                     />
                   </section>
                   <section>
                     <FormRender
                       methods={form}
                       formFields={inputFields.slice(7)}
-                      onButtonClick={onButtonClick}
                     />
                   </section>
                 </div>
               ) : (
-                <FormRender
-                  methods={form}
-                  formFields={inputFields}
-                  onButtonClick={onButtonClick}
-                />
+                <FormRender methods={form} formFields={inputFields} />
               )}
             </form>
           </Form>
@@ -209,7 +179,7 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
             <Button
               type="button"
               onClick={form.handleSubmit(onSubmit, (errors) =>
-                console.error("Validation errors:", errors)
+                console.error("Validation errors:", errors),
               )}
             >
               儲存
