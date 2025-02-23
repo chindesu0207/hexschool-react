@@ -20,6 +20,13 @@ const Home = () => {
         "4. 使用者可以點擊單一產品，查看詳細資訊",
       ],
     },
+    {
+      title: "Week03 - 熟練 React.js",
+      content: [
+        "1. 可以新增、編輯、刪除商品",
+        "2. 商品啟用、關閉可以使用不同的顏色標示",
+      ],
+    },
   ];
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">
