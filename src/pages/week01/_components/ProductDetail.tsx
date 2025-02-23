@@ -8,7 +8,7 @@ const ProductDetail = ({ product }: ProductProps) => {
         {product.category}
       </span>
       <div className="text-gray-500 my-4">{product.description}</div>
-      <div>商品規格: {product.content}</div>
+      <div>商品描述: {product.content}</div>
       <div className="flex items-center gap-3">
         <span className="text-2xl font-bold text-accent my-6">
           NT${product.price}/{product.unit}
