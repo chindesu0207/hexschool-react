@@ -44,12 +44,22 @@ export interface FormButton<T extends FieldValues> {
   width?: number;
 }
 
+export interface FormImagesInput<T extends FieldValues> {
+  type: "images";
+  label: string;
+  name: Path<T> | string;
+  placeholder?: string;
+  width?: number;
+  maxCount?: number;
+}
+
 export type FormFieldType<T extends FieldValues> =
   | FormButton<T>
   | FormInput<T>
   | FormTextarea<T>
   | FormSelect<T>
-  | FormSwitch<T>;
+  | FormSwitch<T>
+  | FormImagesInput<T>;
 
 export type FormRenderProps<T extends FieldValues> = {
   formFields: FormFieldType<T>[];

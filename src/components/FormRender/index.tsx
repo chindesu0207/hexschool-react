@@ -5,6 +5,7 @@ import FormTextarea from "./_components/FormTextarea";
 import FormSwitch from "./_components/FormSwitch";
 import FormSelect from "./_components/FormSelect";
 import FormButton from "./_components/FormButton";
+import FormImagesInput from "./_components/FormImagesInput";
 
 const FormRender = <T extends FieldValues>({
   formFields,
@@ -24,6 +25,8 @@ const FormRender = <T extends FieldValues>({
         return <FormTextarea {...field} />;
       case "switch":
         return <FormSwitch {...field} />;
+      case "images":
+        return <FormImagesInput {...field} />;
       default:
         return null;
     }
