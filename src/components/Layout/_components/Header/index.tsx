@@ -11,7 +11,7 @@ const Header = () => {
     { title: "Week01", href: "/week01" },
     { title: "Week02", href: "/week02" },
     { title: "Week03", href: "/week03" },
-    { title: "Week04", href: "#" },
+    { title: "Week04", href: "/week04" },
     { title: "Week05", href: "#" },
     { title: "Week06", href: "#" },
     { title: "Week07", href: "#" },

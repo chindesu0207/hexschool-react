@@ -27,6 +27,14 @@ const Home = () => {
         "2. 商品啟用、關閉可以使用不同的顏色標示",
       ],
     },
+    {
+      title: "Week04 - 元件化",
+      content: [
+        "1. 將後台頁面 Modal 以及分頁改成元件",
+        "2. 使用 import module 來引入元件",
+        "3. 使用者可以打開 Modal 新增、編輯、刪除商品",
+      ],
+    },
   ];
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">
