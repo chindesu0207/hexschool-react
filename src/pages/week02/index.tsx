@@ -8,14 +8,14 @@ import Week02Skeleton from "./Week02Skeleton";
 
 const Week02 = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [tempProduct, setTempProduct] = useState<Product>();
+  const [tempProduct, setTempProduct] = useState<Product | null>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getProducts = async () => {
     try {
-      const res = await productApi.getAll();
-      setProducts(res.products);
-      setTempProduct(res.products[0]);
+      const res = await productApi.getAll(1);
+      setProducts(res.products ?? []);
+      setTempProduct(res.products?.[0]);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);

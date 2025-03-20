@@ -5,7 +5,7 @@ const ProductPhotos = ({ product }: ProductProps) => {
   const [selectedPhoto, setSelectedPhoto] = useState<string>(product.imageUrl);
   const photos: string[] = [
     product.imageUrl,
-    ...product.imagesUrl.filter((item) => item !== ""),
+    ...(product.imagesUrl?.filter((item) => item !== "") ?? []),
   ];
 
   useEffect(() => {

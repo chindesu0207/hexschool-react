@@ -12,8 +12,8 @@ const Week03 = () => {
 
   const getProducts = async () => {
     try {
-      const res = await productApi.getAll();
-      setProducts(res.products);
+      const res = await productApi.getAll(1);
+      setProducts(res.products ?? []);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -26,13 +26,13 @@ const Week03 = () => {
   const updateProduct = (updatedProduct: Product) => {
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
-        product.id === updatedProduct.id ? updatedProduct : product
-      )
+        product.id === updatedProduct.id ? updatedProduct : product,
+      ),
     );
   };
   const deleteProduct = (deleteProduct: string) => {
     setProducts((prevProducts) =>
-      prevProducts.filter((product) => product.id !== deleteProduct)
+      prevProducts.filter((product) => product.id !== deleteProduct),
     );
   };
   return (
