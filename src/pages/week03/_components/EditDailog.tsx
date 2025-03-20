@@ -18,6 +18,7 @@ import { ProductProps } from "@/types/product";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const EditDailog = ({ product, category, onSave }: ProductProps) => {
@@ -28,7 +29,6 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
       label: "品名",
       name: "title",
       type: "text",
-      value: product.title,
       width: 1,
     },
     {
@@ -39,20 +39,17 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
         label: item,
         value: item,
       })),
-      value: product.category,
       width: 1,
     },
     {
       label: "商品簡介",
       name: "content",
       type: "textarea",
-      value: product.content,
     },
     {
       label: "商品描述",
       name: "description",
       type: "textarea",
-      value: product.description,
     },
     {
       label: "單位",
@@ -78,14 +75,13 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
     {
       label: "商品主圖",
       name: "imageUrl",
-      type: "text",
-      value: product.imageUrl,
+      type: "images",
     },
     {
       label: "圖片名稱",
       name: `imagesUrl`,
       type: "images",
-      placeholder: "請填寫網址",
+      maxCount: 5,
     },
     {
       label: "是否啟用",
@@ -129,8 +125,10 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
       await productApi.update(product.id, data);
       onSave?.({ id: product.id, ...formData });
       setOpen(false);
+      toast.success("編輯成功");
     } catch (error) {
       console.log(error);
+      toast.success("編輯失敗");
     }
   };
   return (

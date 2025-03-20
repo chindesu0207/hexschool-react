@@ -9,6 +9,7 @@ import FormRender from "@/components/FormRender";
 import { productSchema } from "@/schema/productSchema";
 import { ProductSchemaType } from "@/api/services/product/types";
 import { productApi } from "@/api/services/product";
+import { toast } from "sonner";
 
 interface AddProductProps {
   onAddProduct: () => void;
@@ -82,13 +83,13 @@ const AddProduct = ({ onAddProduct }: AddProductProps) => {
     {
       label: "產品主圖",
       name: "imageUrl",
-      type: "text",
+      type: "images",
     },
     {
       label: "圖片名稱",
       name: `imagesUrl`,
       type: "images",
-      placeholder: "請填寫網址",
+      maxCount: 5,
     },
     {
       label: "是否啟用",
@@ -99,15 +100,17 @@ const AddProduct = ({ onAddProduct }: AddProductProps) => {
   ];
 
   const onSubmit = async (formFields: z.infer<typeof productSchema>) => {
-    console.log("123");
+    console.log(formFields);
 
     try {
       const res = await productApi.create({ data: formFields });
       console.log(res);
+      toast.success("新增成功");
       form.reset();
       onAddProduct();
     } catch (error) {
       console.log(error);
+      toast.error("刪除失敗");
     }
   };
   return (

@@ -12,14 +12,17 @@ import {
 } from "@/components/ui/alert-dialog";
 import { ProductProps } from "@/types/product";
 import { productApi } from "@/api/services/product";
+import { toast } from "sonner";
 
 const DeleteDailog = ({ product, onDelete }: ProductProps) => {
   const onSubmit = async (id: string) => {
     try {
       await productApi.delete(id);
+      toast.success("刪除成功");
       onDelete?.(id);
     } catch (error) {
       console.log(error);
+      toast.error("刪除成功");
     }
   };
   return (

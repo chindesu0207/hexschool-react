@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { signInSchema } from "@/schema/authSchema";
 import { authApi } from "@/api/services/auth";
 import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 const SignIn = () => {
   const { signIn } = useAuth();
@@ -39,10 +40,12 @@ const SignIn = () => {
     try {
       const res = await authApi.signIn(values);
       if (res.success) {
+        toast.success("登入成功");
         signIn(res.uid, res.token);
         redirectBack();
       }
     } catch (error) {
+      toast.error("登入失敗");
       console.log(error);
     }
   };
