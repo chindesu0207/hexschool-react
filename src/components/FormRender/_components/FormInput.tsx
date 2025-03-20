@@ -27,8 +27,20 @@ const FormInput = <T extends FieldValues>({
             <FormControl>
               <Input
                 {...field}
-                type={type === "number" ? "tel" : type}
+                type={type === "number" ? "number" : type}
                 placeholder={placeholder}
+                inputMode={type === "number" ? "numeric" : undefined}
+                min={type === "number" ? 0 : undefined}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (type === "number") {
+                    field.onChange(
+                      value === "" ? "" : Math.max(0, Number(value)),
+                    );
+                  } else {
+                    field.onChange(value);
+                  }
+                }}
               />
             </FormControl>
             <FormMessage />
