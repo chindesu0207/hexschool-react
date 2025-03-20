@@ -1,5 +1,6 @@
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import { Toaster } from "../ui/sonner";
 
 const Layout = ({
   children,
@@ -11,6 +12,7 @@ const Layout = ({
       <Header />
       <main className="flex-grow">{children}</main>
       <Footer />
+      <Toaster />
     </div>
   );
 };
