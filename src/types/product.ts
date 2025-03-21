@@ -15,7 +15,7 @@ export interface Product {
 
 export type ProductListProps = {
   products: Product[];
-  onUpdateProduct: (updatedProduct: Product) => void;
+  onUpdateProduct: (updatedProduct?: Product) => void;
   onDeleteProduct: (deleteProduct: string) => void;
 };
 
@@ -25,4 +25,10 @@ export type ProductProps = {
   onClick?: () => void;
   onSave?: (updatedProduct: Product) => void;
   onDelete?: (deleteProduct: string) => void;
+};
+
+export type ProductFormProps = Omit<ProductProps, "product"> & {
+  product?: Product;
+  isCreateMode?: boolean;
+  onSuccess: () => void;
 };
