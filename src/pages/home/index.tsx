@@ -35,6 +35,14 @@ const Home = () => {
         "3. 使用者可以打開 Modal 新增、編輯、刪除商品",
       ],
     },
+    {
+      title: "Week05 - 進階語法介紹",
+      content: [
+        "1. 使用 React Hook Form 完成表單驗證功能",
+        "2. 使用 react-loading 套件 製作 loading 效果",
+        "3. 串接前台 API 完成購物車功能",
+      ],
+    },
   ];
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">

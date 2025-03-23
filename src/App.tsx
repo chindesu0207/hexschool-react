@@ -5,6 +5,7 @@ import Week01 from "./pages/week01";
 import Week02 from "./pages/week02";
 import Week03 from "./pages/week03";
 import Week04 from "./pages/week04";
+import Week05 from "./pages/week05";
 import SignIn from "./pages/auth/signIn";
 import Register from "./pages/auth/register";
 import { AuthProvider } from "./context/AuthProvider";
@@ -42,6 +43,7 @@ const App = () => {
                 </ProtectedRoute>
               }
             ></Route>
+            <Route path="week05" element={<Week05 />}></Route>
             <Route path="signIn" element={<SignIn />}></Route>
             <Route path="register" element={<Register />}></Route>
           </Routes>
