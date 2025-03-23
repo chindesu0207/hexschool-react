@@ -12,6 +12,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  width: 100vw !important; /*解決dialog時，scrollbar被移除造成畫面縮減的workaround*/
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
