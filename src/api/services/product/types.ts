@@ -11,7 +11,7 @@ interface Pagination {
 }
 
 export interface ProductResponse {
-  success: true;
+  success: boolean;
   pagination?: Pagination;
   products?: Product[];
   imageUrl?: string;
