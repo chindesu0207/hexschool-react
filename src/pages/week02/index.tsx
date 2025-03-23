@@ -1,4 +1,4 @@
-import { productApi } from "@/api/services/product";
+import { productAdminApi } from "@/api/services/product";
 import { useEffect, useState } from "react";
 import ProductCard from "../week01/_components/ProductCard";
 import ProductPhotos from "../week01/_components/ProductPhotos";
@@ -13,7 +13,7 @@ const Week02 = () => {
 
   const getProducts = async () => {
     try {
-      const res = await productApi.getAll(1);
+      const res = await productAdminApi.getAll(1);
       setProducts(res.products ?? []);
       setTempProduct(res.products?.[0]);
       setIsLoading(false);

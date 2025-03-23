@@ -1,4 +1,4 @@
-import { productApi } from "@/api/services/product";
+import { productAdminApi } from "@/api/services/product";
 import FormRender from "@/components/FormRender";
 import { Button } from "@/components/ui/button";
 import {
@@ -61,7 +61,7 @@ const ProductFormDailog = ({
     console.log(formData);
     try {
       if (isCreateMode) {
-        await productApi.create({ data: formData });
+        await productAdminApi.create({ data: formData });
         form.reset();
       } else if (product) {
         const data = {
@@ -70,7 +70,7 @@ const ProductFormDailog = ({
             is_enabled: formData.is_enabled ? 1 : 0,
           },
         };
-        await productApi.update(product.id, data);
+        await productAdminApi.update(product.id, data);
       }
       toast.success(`${isCreateMode ? "新增成功" : "編輯成功"}`);
       setOpen(false);

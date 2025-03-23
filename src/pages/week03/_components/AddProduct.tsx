@@ -8,7 +8,7 @@ import { FormFieldType } from "@/components/FormRender/type";
 import FormRender from "@/components/FormRender";
 import { productSchema } from "@/schema/productSchema";
 import { ProductSchemaType } from "@/api/services/product/types";
-import { productApi } from "@/api/services/product";
+import { productAdminApi } from "@/api/services/product";
 import { toast } from "sonner";
 
 interface AddProductProps {
@@ -103,7 +103,7 @@ const AddProduct = ({ onAddProduct }: AddProductProps) => {
     console.log(formFields);
 
     try {
-      const res = await productApi.create({ data: formFields });
+      const res = await productAdminApi.create({ data: formFields });
       console.log(res);
       toast.success("新增成功");
       form.reset();

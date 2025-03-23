@@ -1,4 +1,4 @@
-import { productApi } from "@/api/services/product";
+import { productAdminApi } from "@/api/services/product";
 import { ProductSchemaType } from "@/api/services/product/types";
 import FormRender from "@/components/FormRender";
 import { FormFieldType } from "@/components/FormRender/type";
@@ -122,7 +122,7 @@ const EditDailog = ({ product, category, onSave }: ProductProps) => {
       },
     };
     try {
-      await productApi.update(product.id, data);
+      await productAdminApi.update(product.id, data);
       onSave?.({ id: product.id, ...formData });
       setOpen(false);
       toast.success("編輯成功");

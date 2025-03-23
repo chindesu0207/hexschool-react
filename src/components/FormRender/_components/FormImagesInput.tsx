@@ -14,7 +14,7 @@ import {
 } from "react-hook-form";
 import type { FormImagesInput } from "../type";
 import { useState } from "react";
-import { productApi } from "@/api/services/product";
+import { productAdminApi } from "@/api/services/product";
 import { toast } from "sonner";
 import { X } from "lucide-react";
 
@@ -42,7 +42,7 @@ const FormImagesInput = <T extends FieldValues>({
     const formData = new FormData();
     formData.append("file-to-upload", image);
 
-    const { imageUrl } = await productApi.uploadImage(formData);
+    const { imageUrl } = await productAdminApi.uploadImage(formData);
     return imageUrl;
   };
 

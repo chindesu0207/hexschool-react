@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { productApi } from "@/api/services/product";
+import { productAdminApi } from "@/api/services/product";
 import { Product } from "@/types/product";
 import ProductList from "../week04/_components/ProductList";
 import PaginationComponent from "./_components/PaginationComponent";
@@ -13,7 +13,7 @@ const Week04 = () => {
 
   const getProducts = useCallback(async () => {
     try {
-      const res = await productApi.getAll(currentPage);
+      const res = await productAdminApi.getAll(currentPage);
 
       setProducts(res.products ?? []);
       setTotalPages(res.pagination?.total_pages ?? 1);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { productApi } from "@/api/services/product";
+import { productAdminApi } from "@/api/services/product";
 import { Product } from "@/types/product";
 import AddProduct from "./_components/AddProduct";
 import ProductList from "./_components/ProductList";
@@ -12,7 +12,7 @@ const Week03 = () => {
 
   const getProducts = async () => {
     try {
-      const res = await productApi.getAll(1);
+      const res = await productAdminApi.getAll(1);
       setProducts(res.products ?? []);
       setIsLoading(false);
     } catch (error) {
