@@ -1,7 +1,7 @@
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
 export interface FormInput<T extends FieldValues> {
-  type: "text" | "number";
+  type: "text" | "tel" | "number";
   label: string;
   name: Path<T> | string;
   value?: string;

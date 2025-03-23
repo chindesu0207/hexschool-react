@@ -15,6 +15,7 @@ const FormRender = <T extends FieldValues>({
   const renderField = (field: FormFieldType<T>) => {
     switch (field.type) {
       case "text":
+      case "tel":
       case "number":
         return <FormInput {...field} />;
       case "select":
